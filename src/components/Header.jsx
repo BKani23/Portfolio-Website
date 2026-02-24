@@ -5,7 +5,6 @@ import { MdOutlineDriveFileMove, MdOutlineMarkunread } from "react-icons/md";
 import "../styles/Header.css";
 
 const Header = () => {
-
   const [active, setActive] = useState(null);
 
   const menuItems = [
@@ -15,7 +14,6 @@ const Header = () => {
   ];
 
   return (
-     
     <header className="header-container">
       <h2 className="initials-text left-section">BK.</h2>
 
@@ -33,7 +31,14 @@ const Header = () => {
       </div>
 
       <div className="right-section">
-        <button className="download-cv-button">Download CV</button>
+        <a
+          href="/Kani-cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="download-cv-button"
+        >
+          View CV
+        </a>
       </div>
     </header>
   );
