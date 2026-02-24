@@ -64,19 +64,22 @@
 
 
 .download-cv-button {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: 1px solid orange;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: transparent;
-  transition: all 0.3s ease;
-}
-
-.download-cv-button:hover {
-  background-color: orange;
-  color: white;
-}
+     display: inline-block;   
+     padding: 10px 20px;
+     border-radius: 20px;
+     border: 1px solid orange;
+     font-weight: bold;
+     text-decoration: none;    
+     color: orange;
+     background-color: transparent;
+     cursor: pointer;
+     transition: all 0.3s ease;
+   }
+   
+   .download-cv-button:hover {
+     background-color: orange;
+     color: white;
+   }
 
 
 .menu-icon:hover {
