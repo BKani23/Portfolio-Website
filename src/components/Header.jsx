@@ -5,6 +5,7 @@ import { MdOutlineDriveFileMove, MdOutlineMarkunread } from "react-icons/md";
 import "../styles/Header.css";
 
 const Header = () => {
+  
   const [active, setActive] = useState(null);
 
   const menuItems = [
@@ -14,8 +15,9 @@ const Header = () => {
   ];
 
   return (
+    
     <header className="header-container">
-      <h2 className="initials-text left-section">BK.</h2>
+      <h2 className="initials-text left-section">BK<span className="period">.</span></h2>
 
       <div className="nav-bar">
         {menuItems.map((item) => (
