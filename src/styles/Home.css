@@ -4,29 +4,10 @@
      background-image: url('../assets/backgroundImage.avif'); 
      background-size: cover;
      background-position: center;
-     position: relative;
      display: flex;
      justify-content: center;
      align-items: center;
    
-   }
-   
-   .overlay {
-     position: absolute;
-     top: 0;
-     left: 0;
-     height: 100%;
-     width: 100%;
-     background-color: rgba(0, 0, 0, 0.5); 
-     display: flex;
-     justify-content: center;
-     align-items: center;
-   }
-   
-   .home-content {
-     text-align: center;
-     color: white;
-     z-index: 1; 
    }
    
    .home-name {
@@ -55,9 +36,9 @@
      position: absolute;
      top: 0;
      left: 0;
+     right : 0;
      height: 100%;
-     width: 100%;
-     background-color: rgba(0, 0, 0, 0.5);
+     /* background-color: rgba(0, 0, 0, 0); */
      display: flex;
      justify-content: center;
      align-items: center;
@@ -68,13 +49,8 @@
      color: white;
    }
    
-   .home-content {
-     text-align: center;
-     color: white;
-   }
-   
    .home-name {
-     font-size: 4rem;
+     font-size: 5rem;
      font-weight: bold;
      margin: 0;
    }
@@ -84,5 +60,35 @@
      margin-top: 10px;
      font-weight: 500;
    }
+
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  right: 20%;
+  width: 30px;
+  background-color: white;
+  height: 50px;
+  border: 2px solid orange;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.scroll-down span {
+  width: 5px;
+  height: 15px;
+  background: orange;
+  border-radius: 2px;
+  animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(20px); opacity: 0.5; }
+  100% { transform: translateY(0); opacity: 1; }
+}
    
    

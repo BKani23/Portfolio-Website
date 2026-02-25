@@ -1,8 +1,13 @@
 
 .initials-text {
-  color: orange;
+  color: white;
   font-size: 1.8rem;
   font-weight: bold;
+}
+
+.period{
+    color: orange;
+
 }
 
 /* Main header container */
@@ -44,6 +49,13 @@
   transition: all 0.3s ease; 
   display: flex;
   align-items: center;
+  color : white
+}
+
+
+.menu-icon:hover {
+  transform: scale(1.2);
+  color: orange;
 }
 
 /* Active icon expands and shows text */
@@ -70,7 +82,7 @@
      border: 1px solid orange;
      font-weight: bold;
      text-decoration: none;    
-     color: orange;
+     color: white;
      background-color: transparent;
      cursor: pointer;
      transition: all 0.3s ease;
@@ -82,7 +94,3 @@
    }
 
 
-.menu-icon:hover {
-  transform: scale(1.2);
-  color: orange;
-}
