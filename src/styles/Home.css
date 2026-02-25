@@ -1,65 +1,63 @@
 .home-section {
-     height: 100vh; 
-     width: 100%;
-     background-image: url('../assets/backgroundImage.avif'); 
-     background-size: cover;
-     background-position: center;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-   
-   }
-   
-   .home-name {
-     font-size: 4rem;
-     font-weight: bold;
-     margin: 0;
-   }
-   
-   .home-title {
-     font-size: 2rem;
-     margin-top: 10px;
-     font-weight: 500;
-   }
-   
+  height: 100vh;
+  width: 100%;
+  background-image: url("../assets/backgroundImage.avif");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-   @media (max-width: 768px) {
-     .home-name {
-       font-size: 3rem;
-     }
-     .home-title {
-       font-size: 1.5rem;
-     }
-   }
-   
-   .overlay {
-     position: absolute;
-     top: 0;
-     left: 0;
-     right : 0;
-     height: 100%;
-     /* background-color: rgba(0, 0, 0, 0); */
-     display: flex;
-     justify-content: center;
-     align-items: center;
-   }
-   
-   .home-content {
-     text-align: center;
-     color: white;
-   }
-   
-   .home-name {
-     font-size: 5rem;
-     font-weight: bold;
-     margin: 0;
-   }
-   
-   .home-title {
-     font-size: 2rem;
-     margin-top: 10px;
-     font-weight: 500;
-   }
+.home-name {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.home-title {
+  font-size: 2rem;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .home-name {
+    font-size: 3rem;
+  }
+  .home-title {
+    font-size: 1.5rem;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-content {
+  text-align: center;
+  color: white;
+}
+
+.home-name {
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.home-title {
+  font-size: 2rem;
+  margin-top: 10px;
+  font-weight: 500;
+}
 
 .scroll-down {
   position: absolute;
@@ -86,9 +84,16 @@
 }
 
 @keyframes scroll {
-  0% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(20px); opacity: 0.5; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(20px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
-   
-   

@@ -4,7 +4,7 @@ import "../styles/Home.css";
 const Home = () => {
   return (
     <section
-      className="home-section"
+      className="home-section home"
     >
       <div className="overlay"></div>
 
@@ -20,7 +20,7 @@ const Home = () => {
         onClick={() =>
         {
           document
-            .getElementById("about")
+            .querySelector(".about")
             .scrollIntoView({ behavior: "smooth" })
         }
       }
