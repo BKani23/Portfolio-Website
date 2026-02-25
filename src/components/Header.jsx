@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { MdOutlineDriveFileMove, MdOutlineMarkunread } from "react-icons/md";
+import { SlUser } from "react-icons/sl";
+
 
 import "../styles/Header.css";
 
@@ -10,6 +12,7 @@ const Header = () => {
 
   const menuItems = [
     { icon: <IoHomeOutline />, label: "Home", key: "home" },
+    { icon: <SlUser />, label: "About", key: "about" },
     { icon: <MdOutlineDriveFileMove />, label: "Projects", key: "projects" },
     { icon: <MdOutlineMarkunread />, label: "Messages", key: "messages" },
   ];
@@ -24,7 +27,17 @@ const Header = () => {
           <div
             key={item.key}
             className={`menu-icon ${active === item.key ? "active" : ""}`}
-            onClick={() => setActive(item.key)}
+            onClick={() => {
+
+              setActive(item.key);
+
+              document
+              .querySelector(`.${item.key}`)
+              .scrollIntoView({ behavior: "smooth" })
+
+          }
+
+            }
             data-label={item.label}
           >
             {item.icon}
