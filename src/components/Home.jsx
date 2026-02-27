@@ -6,7 +6,14 @@ const Home = () => {
   return (
     <section className="home-section home">
       <div className="home-content">
-        <h1 className="home-name">Bulelani Kani<span className="period">.</span></h1>
+        <h1 className="home-name">
+          {"Bulelani Kani".split("").map((char, index) => (
+            <span key={index} className="letter" style={{ "--i": index }}>
+              {char}
+            </span>
+          ))}
+          <span className="period">.</span>
+        </h1>
         <h2 className="home-title">Fullstack Software Developer</h2>
       </div>
 

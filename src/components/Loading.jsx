@@ -51,8 +51,8 @@ const Loading = ({ onFinish }) => {
       <div className="loading-marquee">
         <Marquee speed={160} pauseOnHover={true}>
           <span>&nbsp;• CUM LAUDE GRADUATE &nbsp;</span>
-          <span>&nbsp;• Full Stack Developer &nbsp;</span>
-          <span>&nbsp;• React Native Enthusiast &nbsp;</span>
+          <span>&nbsp;• FULL STACK DEVELOPER &nbsp;</span>
+          <span>&nbsp;• REACT NATIVE ENTHUSIAST &nbsp;</span>
         </Marquee>
       </div>
 

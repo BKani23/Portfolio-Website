@@ -1,18 +1,20 @@
+
 .home-section {
   height: 100vh;
   width: 100%;
-  background-color: rgb(7, 7, 7); 
+  background-color: rgb(7, 7, 7);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 140px 50px 0 100px; 
+  padding: 140px 50px 0 100px;
   box-sizing: border-box;
-  position: relative; 
+  position: relative;
 }
+
 
 .home-content {
   color: white;
-  max-width: 50%; 
+  max-width: 50%;
   text-align: center;
 }
 
@@ -22,61 +24,78 @@
   margin: 0 0 20px 0;
 }
 
+/* Each letter bounce with dynamic color */
+.home-name .letter {
+  display: inline-block;
+  cursor: default;
+  animation: bounceColor 0.6s ease forwards;
+  animation-delay: calc(var(--i) * 0.05s);
+  animation-play-state: paused; 
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.home-name:hover .letter {
+  animation-play-state: running; 
+}
+
+
 .home-title {
   font-size: 2rem;
   font-weight: 500;
   margin: 0;
 }
 
-.home-image {
+/* Bounce + color keyframes */
+@keyframes bounceColor {
+  0%   { transform: translateY(0); color: white; }
+  30%  { transform: translateY(-10px); color: orange; }
+  50%  { transform: translateY(0); color: white; }
+  70%  { transform: translateY(-5px); color: orange; }
+  100% { transform: translateY(0); color: white; }
+}
 
-  max-width: 45%;    
+
+.home-image {
+  max-width: 45%;
   height: auto;
   border-radius: 30px;
   object-fit: contain;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Scroll down indicator */
+
 .scroll-down {
-  position: absolute;
-  bottom: 30px;
+  position: fixed;
+  bottom: 40px;
   left: 50%;
-  transform: translateX(-50%);
   width: 30px;
   height: 50px;
   border: 2px solid orange;
   border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  padding-top: 5px;
   cursor: pointer;
-  z-index: 2;
-  background-color: rgb(255, 255, 255); 
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 999;
 }
 
 .scroll-down span {
+  position: absolute;
+  top: 0;
+  left: 50%;
   width: 5px;
   height: 15px;
-  background: orange;
+  background-color: orange;
   border-radius: 2px;
+  transform: translateX(-50%);
   animation: scroll 1.5s infinite;
 }
 
 @keyframes scroll {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(20px);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  50% { transform: translateX(-50%) translateY(20px); opacity: 0.5; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
+
 
 @media (max-width: 1024px) {
   .home-section {
@@ -93,4 +112,4 @@
   .home-title {
     font-size: 1.5rem;
   }
-}
+} 
