@@ -8,7 +8,7 @@ import "../styles/SocialIcons.css";
 
 const SOCIAL_LINKS = {
   github: "https://github.com/BKani23",
-  linkedin: "www.linkedin.com/in/bulelani-kani",
+  linkedin: "https.linkedin.com/in/bulelani-kani",
   instagram: "https://www.instagram.com/bulelanibeekay23/"
 };
 
