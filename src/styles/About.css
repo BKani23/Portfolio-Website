@@ -1,3 +1,5 @@
+/* Import Poppins for sentences and Orbitron for title */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&display=swap');
 .about-section {
   min-height: 200vh;
   padding: 150px 10%;
@@ -10,6 +12,7 @@
 
 .about-line {
   position: relative;
+  font-family: 'Audiowide', cursive;
   font-size: clamp(40px, 6vw, 90px);
   font-weight: 700;
   line-height: 1.1;
@@ -52,10 +55,10 @@
   font-size: clamp(70px, 9vw, 140px);
   font-weight: 800;
   letter-spacing: 6px;
+  font-family: 'Audiowide', cursive; 
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: "Courier New", monospace;
   position: relative;
 }
 
@@ -65,7 +68,7 @@
   text-shadow: 10px 15px 15px rgba(114, 139, 134, 0.3);
 }
 
-/* About word */
+
 .code-text {
   background: linear-gradient(90deg, #ffffff, #aaaaaa, #ffffff);
   background-size: 200% auto;
