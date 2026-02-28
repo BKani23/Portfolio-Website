@@ -1,0 +1,92 @@
+/* Container for all bottom icons and resume */
+.icons-section {
+  position: fixed;
+  bottom: 30px; /* distance from bottom */
+  left: 20px;   /* distance from left */
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;
+  gap: 20px;
+  z-index: 99;
+}
+
+/* Social icons container */
+.social-icons {
+  display: flex;
+  flex-direction: column; /* one column */
+  gap: 15px;
+  padding: 20px;
+  margin-bottom: 1px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.social-icons:hover {
+  background-color: orange; /* hover background */
+}
+
+/* Each icon styling */
+.social-icons a {
+  color: white;
+  font-size: 23px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: black; /* contrast on orange background */
+}
+
+/* Resume button */
+.resume-button {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5e5e5e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.5s;
+}
+
+.resume-button:hover {
+  color: #fff;
+}
+
+.resume-button span {
+  color: #fff;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+}
+
+/* Decorative line if needed */
+.check-line {
+  position: fixed;
+  top: 655px;
+  left: 0;
+  height: 1px;
+  background-color: #ffffff;
+  width: 100%;
+  z-index: 99999;
+}
+
+/* Responsive adjustments */
+@media only screen and (min-width: 900px) {
+  .social-icons a {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .resume-button {
+    font-size: 20px;
+  }
+  .resume-button span {
+    font-size: 23px;
+  }
+}

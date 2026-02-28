@@ -20,7 +20,7 @@ const Header = () => {
   return (
     
     <header className="header-container">
-      <h2 className="initials-text left-section">BK<span className="period">.</span></h2>
+      <h2 className="initials-text left-section" data-cursor="disable">BK<span className="period">.</span></h2>
 
       <div className="nav-bar">
         {menuItems.map((item) => (
@@ -39,6 +39,7 @@ const Header = () => {
 
             }
             data-label={item.label}
+            data-cursor="disable"
           >
             {item.icon}
           </div>
@@ -51,6 +52,7 @@ const Header = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="download-cv-button"
+          data-cursor="disable"
         >
           View CV
         </a>
