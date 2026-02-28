@@ -10,29 +10,31 @@ const Education = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("active");
+            entry.target.classList.add("active"); // Animate in
+          } else {
+            entry.target.classList.remove("active"); // Animate out
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.5 }
     );
-
+  
     cardRefs.current.forEach((el) => {
       if (el) observer.observe(el);
     });
-
+  
     return () => observer.disconnect();
   }, []);
 
   const educationData = [
     {
       degree: "Bachelor of Information Technology",
+      school: "Nelson Mandela University",
       description:
         "A comprehensive program covering software development, database management, networking, and IT project management. Key modules: Programming, Web Development, Data Structures, Cloud Computing.",
       years: "2023 - 2025",
       logo: schoolLogo,
     },
-    // Add more education entries here if needed
   ];
 
   return (
@@ -42,7 +44,7 @@ const Education = () => {
           <span className="code-symbol">&lt;</span>
           <span className="code-text">Education</span>
           <span className="code-symbol">/&gt;</span>
-        </h1>{" "}
+        </h1>
         <div className="education-underline"></div>
       </div>
 
@@ -54,6 +56,7 @@ const Education = () => {
         >
           <div className="card-left">
             <h2 className="degree">{edu.degree}</h2>
+            <h3 className="school-name">{edu.school}</h3>
             <p className="description">{edu.description}</p>
           </div>
 
