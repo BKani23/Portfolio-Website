@@ -6,6 +6,7 @@ import SocialSection from "./components/SocialSection";
 import Loading from "./components/Loading";
 import Cursor from "./components/Cursor";
 import Education from "./components/Education";
+import Skills from "./components/Skills";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Home />
           <About />
           <Education/>
+          <Skills/>
           <SocialSection />
         
         </>
