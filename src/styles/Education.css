@@ -38,7 +38,7 @@
   100% { background-position: 200% center; }
 }
 
-
+/* Base card styles: start off-screen to the left */
 .education-card {
   display: flex;
   justify-content: space-between;
@@ -48,16 +48,16 @@
   padding: 30px 40px;
   gap: 40px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-
   opacity: 0;
-  transform: translateY(50px) rotateX(10deg);
-  transform-origin: bottom;
-  transition: all 0.8s ease;
+  transform: translateX(-100px) rotateY(-10deg);
+  transform-origin: left;
+  transition: all 0.8s ease 0.3s;
 }
+
 
 .education-card.active {
   opacity: 1;
-  transform: translateY(0) rotateX(0deg);
+  transform: translateX(0) rotateY(0deg);
 }
 
 
