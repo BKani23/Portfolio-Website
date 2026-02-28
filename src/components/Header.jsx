@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
-import { MdOutlineDriveFileMove, MdOutlineMarkunread } from "react-icons/md";
+import { MdOutlineDriveFileMove, MdOutlineMarkunread ,MdOutlineSchool } from "react-icons/md";
 import { SlUser } from "react-icons/sl";
 
 
@@ -13,6 +13,7 @@ const Header = () => {
   const menuItems = [
     { icon: <IoHomeOutline />, label: "Home", key: "home" },
     { icon: <SlUser />, label: "About", key: "about" },
+    { icon: <MdOutlineSchool  />, label: "Education", key: "about" },
     { icon: <MdOutlineDriveFileMove />, label: "Projects", key: "projects" },
     { icon: <MdOutlineMarkunread />, label: "Messages", key: "messages" },
   ];
