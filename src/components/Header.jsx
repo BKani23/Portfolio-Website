@@ -13,7 +13,7 @@ const Header = () => {
   const menuItems = [
     { icon: <IoHomeOutline />, label: "Home", key: "home" },
     { icon: <SlUser />, label: "About", key: "about" },
-    { icon: <MdOutlineSchool  />, label: "Education", key: "about" },
+    { icon: <MdOutlineSchool  />, label: "Education", key: "education" },
     { icon: <MdOutlineDriveFileMove />, label: "Projects", key: "projects" },
     { icon: <MdOutlineMarkunread />, label: "Messages", key: "messages" },
   ];

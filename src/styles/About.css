@@ -52,7 +52,7 @@
 /* Developer-Style Title  */
 
 .about-title {
-  font-size: clamp(70px, 9vw, 140px);
+  font-size: clamp(70px, 9vw, 50px);
   font-weight: 800;
   letter-spacing: 6px;
   font-family: 'Audiowide', cursive; 

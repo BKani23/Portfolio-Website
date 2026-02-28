@@ -1,0 +1,118 @@
+/* --------------------- Education Section --------------------- */
+.education-section {
+  min-height: 100vh;
+  padding: 120px 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  background: #070707;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* --------------------- Header --------------------- */
+.education-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.education-title {
+  font-size: clamp(50px, 8vw, 100px);
+  font-weight: 700;
+  color: white;
+}
+
+.education-underline {
+  margin-top: 20px;
+  width: 140px;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff9900, #ffffff);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* --------------------- Education Card --------------------- */
+.education-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  border-radius: 15px;
+  padding: 30px 40px;
+  gap: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.education-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------- Left Column --------------------- */
+.card-left {
+  flex: 1;
+  text-align: left;
+}
+
+.degree {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* --------------------- Right Column --------------------- */
+.card-right {
+  flex: 0 0 200px; /* fixed width for image + year */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.school-logo {
+  width: 150px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 2px solid orange;
+}
+
+.years {
+  font-size: clamp(16px, 2vw, 24px);
+  font-weight: 600;
+  color: orange;
+  margin-top: 5px;
+}
+
+/* --------------------- Responsive --------------------- */
+@media (max-width: 1024px) {
+  .education-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card-left, .card-right {
+    flex: 1 1 100%;
+  }
+
+  .card-right {
+    margin-top: 20px;
+  }
+}
