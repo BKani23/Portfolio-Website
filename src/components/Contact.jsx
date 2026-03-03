@@ -52,7 +52,6 @@ const Contact = () => {
           </button>
         </div>
 
-     
         <div className="contact-content">
           {mode === "standard" ? (
             <div className="standard-placeholder">
@@ -110,7 +109,6 @@ const Contact = () => {
             </div>
           ) : (
             <div className="dev-mode-container">
-          
               <div className="dev-top-bar">
                 <div className="window-circles">
                   <span className="circle red"></span>
@@ -130,9 +128,7 @@ const Contact = () => {
                 </div>
               </div>
 
-       
               <div className="dev-main-row">
-               
                 <div className="activity-bar">
                   {activityIcons.map((item, index) => {
                     const IconComponent = item.icon;
@@ -144,7 +140,6 @@ const Contact = () => {
                   })}
                 </div>
 
-                
                 <div className="explorer-panel">
                   <div className="folder collapsed">
                     <IoIosArrowDown />
@@ -156,20 +151,36 @@ const Contact = () => {
                   </div>
                 </div>
 
-               
                 <div className="code-editor-panel">
                   <div className="tabs">
                     <div className="tab active">contact.tsx</div>
                   </div>
                   <pre className="code-content">
-                    {`const sendMessage = {
-                    name: "${formData.name || "User Name"}",
-                    email: "${formData.email || "user@example.com"}",
-                    message: "${formData.message || "Message content..."}"
-                  };`}
+                    <code>
+                      <span className="keyword">const</span> sendMessage = {"{"}
+                      <br />
+                      &nbsp;&nbsp;<span className="property">name</span>:{" "}
+                      <span className="string">
+                        "{formData.name || "User Name"}"
+                      </span>
+                      ,<br />
+                      &nbsp;&nbsp;<span className="property">email</span>:{" "}
+                      <span className="string">
+                        "{formData.email || "user@example.com"}"
+                      </span>
+                      ,<br />
+                      &nbsp;&nbsp;<span className="property">
+                        message
+                      </span>:{" "}
+                      <span className="string">
+                        "{formData.message || "Message content..."}"
+                      </span>
+                      <br />
+                      {"};"}
+                    </code>
                   </pre>
                   <button className="run-script">
-                    <FaPlay color="orange"/>
+                    <FaPlay color="orange" />
                     Run Script
                   </button>
                 </div>

@@ -131,6 +131,30 @@
 .form-group textarea {
   resize: none;
 }
+.code-content .keyword {
+  color: #569cd6; 
+  font-weight: 500;
+}
+
+.code-content .property {
+  color: #9cdcfe; 
+}
+
+.code-content .string {
+  color: #ce9178; 
+}
+
+.code-content .number {
+  color: #b5cea8; 
+}
+
+.code-content .boolean {
+  color: #569cd6; 
+}
+
+.code-content .punctuation {
+  color: #d4d4d4; 
+}
 
 /* Focus State */
 
