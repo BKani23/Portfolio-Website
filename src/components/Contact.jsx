@@ -25,6 +25,12 @@ const Contact = () => {
     message: "",
   });
 
+  const codeString = `const sendMessage = {
+    name: "${formData.name || "User Name"}",
+    email: "${formData.email || "user@example.com"}",
+    message: "${formData.message || "Message content..."}"
+  };`;
+
   return (
     <section className="contact-section contact">
       <h1 className="contact-title">
@@ -155,32 +161,51 @@ const Contact = () => {
                   <div className="tabs">
                     <div className="tab active">contact.tsx</div>
                   </div>
-                  <pre className="code-content">
-                    <code>
-                      <span className="keyword">const</span> sendMessage = {"{"}
-                      <br />
-                      &nbsp;&nbsp;<span className="property">name</span>:{" "}
-                      <span className="string">
-                        "{formData.name || "User Name"}"
-                      </span>
-                      ,<br />
-                      &nbsp;&nbsp;<span className="property">email</span>:{" "}
-                      <span className="string">
-                        "{formData.email || "user@example.com"}"
-                      </span>
-                      ,<br />
-                      &nbsp;&nbsp;<span className="property">
-                        message
-                      </span>:{" "}
-                      <span className="string">
-                        "{formData.message || "Message content..."}"
-                      </span>
-                      <br />
-                      {"};"}
-                    </code>
-                  </pre>
+
+                  <div className="code-with-lines">
+                    <div className="line-numbers">
+                      {codeString.split("\n").map((_, i) => (
+                        <span key={i}>{i + 1}</span>
+                      ))}
+                    </div>
+
+                    <pre className="code-content">
+                      {codeString.split("\n").map((line, i) => (
+                        <div key={i}>
+                          {line.split(/(".*?"|'.*?'|`.*?`)/g).map((part, j) => {
+                            // strings in orange
+                            if (/^["'`].*["'`]$/.test(part)) {
+                              return (
+                                <span key={j} style={{ color: "#CE9178" }}>
+                                  {part}
+                                </span>
+                              );
+                            }
+                            // keywords like const, let, var
+                            if (/\b(const|let|var)\b/.test(part)) {
+                              return (
+                                <span key={j} style={{ color: "#569CD6" }}>
+                                  {part}
+                                </span>
+                              );
+                            }
+                            // property names
+                            if (/\b(name|email|message)\b/.test(part)) {
+                              return (
+                                <span key={j} style={{ color: "#9CDCFE" }}>
+                                  {part}
+                                </span>
+                              );
+                            }
+                            return part;
+                          })}
+                        </div>
+                      ))}
+                    </pre>
+                  </div>
+
                   <button className="run-script">
-                    <FaPlay color="orange" />
+                    <FaPlay color="#fff" />
                     Run Script
                   </button>
                 </div>

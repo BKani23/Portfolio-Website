@@ -156,6 +156,64 @@
   color: #d4d4d4; 
 }
 
+.code-with-lines {
+  display: flex;
+  background: #1e1e1e;
+  flex: 1;
+  overflow: hidden;
+  font-family: 'Fira Code', monospace;
+}
+
+.line-numbers {
+  background: #2d2d2d;
+  color: #555;
+  padding: 12px 8px;
+  text-align: right;
+  user-select: none;
+}
+
+.line-numbers span {
+  display: block;
+  height: 18px; /* match code line height */
+}
+
+.code-content {
+  flex: 1;
+  padding: 12px;
+  color: #d4d4d4;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+
+.code-with-lines {
+  display: flex;
+  background: #1e1e1e;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.line-numbers {
+  padding: 12px 8px;
+  background: #252526;
+  color: #858585;
+  text-align: right;
+  user-select: none;
+}
+
+.line-numbers span {
+  display: block;
+  line-height: 1.5em;
+}
+
+.code-content {
+  flex: 1;
+  padding: 12px;
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+  color: #d4d4d4;
+  white-space: pre-wrap;
+}
 /* Focus State */
 
 .form-group input:focus,
