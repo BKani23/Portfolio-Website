@@ -81,3 +81,311 @@
   animation: shimmer 4s linear infinite;
   margin: 15px auto 80px auto; 
 }
+
+/*  Form Layout  */
+
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* ensures responsiveness */
+}
+
+.form-group.full-width {
+  flex: 1 1 100%;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px; /* ensures columns don't shrink too much */
+}
+
+/* Floating Label Group  */
+
+.form-group {
+  position: relative;
+  width: 100%;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 16px 12px;
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+/* Focus State */
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: orange;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+}
+
+
+
+.form-group label {
+  position: absolute;
+  left: 12px;
+  top: 16px;
+  color: #777;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s ease;
+  background: #111;
+  padding: 0 5px;
+}
+
+
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 10px;
+  font-size: 12px;
+  color: orange;
+}
+
+
+
+.submit-btn {
+  margin-top: 10px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: orange;
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 165, 0, 0.4);
+}
+
+.dev-mode {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 400px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dev-mode-container {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 100%;
+  background: #1e1e1e; 
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Fira Code', monospace;
+  color: #d4d4d4;
+}
+
+.dev-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 35px;
+  background: linear-gradient(to right, #2d2d2d, #252526);
+  padding: 0 12px;
+  font-size: 12px;
+  color: #ccc;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.window-circles {
+  display: flex;
+  gap: 6px;
+}
+
+.window-circles span.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.circle.red { background: #ff605c; }
+.circle.yellow { background: #ffbd44; }
+.circle.green { background: #00ca4e; }
+
+.breadcrumb {
+  flex: 1;
+  text-align: center;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.top-right-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.dev-main-row {
+  display: flex;
+  flex: 1;
+  height: calc(100% - 35px);
+  overflow: hidden;
+}
+
+
+.activity-bar {
+  width: 50px;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  gap: 15px;
+}
+
+.activity-bar .icon {
+  font-size: 22px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: "background" 0.2s, color 0.2s;
+}
+
+.activity-bar .icon:hover,
+.activity-bar .icon.active {
+  background: #0e639c;
+  color: #fff;
+}
+
+
+.explorer-panel {
+  width: 220px;
+  background: #252526;
+  padding: 10px;
+  font-size: 13px;
+  color: #d4d4d4;
+  overflow-y: auto;
+}
+
+.folder, .subfolder, .file {
+  padding-left: 12px;
+  margin: 2px 0;
+}
+
+.folder.collapsed::before,
+.subfolder::before {
+  /* content: '▾'; */
+  display: inline-block;
+  width: 14px;
+  color: #ccc;
+  margin-right: 4px;
+}
+
+.file::before {
+  content: '📄';
+  display: inline-block;
+  width: 14px;
+  margin-right: 4px;
+}
+
+
+.folder:hover, .subfolder:hover, .file:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+.code-editor-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.tabs {
+  display: flex;
+  background: #2d2d2d;
+  height: 28px;
+  gap: 2px;
+  padding-left: 5px;
+  align-items: center;
+}
+
+.tab {
+  padding: 5px 12px;
+  border-radius: 3px 3px 0 0;
+  background: #2d2d2d;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #1e1e1e;
+  border-bottom: 2px solid #0e639c;
+  color: #fff;
+}
+
+
+.code-content {
+  flex: 1;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 12px;
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.run-script {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; 
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: #0e639c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: "background" 0.2s;
+}
+
+.run-script:hover {
+  background: #1177bb;
+}
