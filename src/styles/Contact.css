@@ -1,0 +1,27 @@
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  background: #070707;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  padding: 100px 10%;
+}
+
+.contact-title {
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 700;
+  margin-bottom: -10px;
+}
+
+.contact-underline {
+  margin-top: -15px;
+  width: 140px;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff9900, #ffffff);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}

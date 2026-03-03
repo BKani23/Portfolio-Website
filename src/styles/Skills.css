@@ -28,9 +28,9 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(7, 90px); */
+  grid-template-columns: repeat(7, 90px);
   gap: 30px;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .skill-icon-container {
@@ -42,17 +42,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 42px; 
+  font-size: 42px;
   transition: transform 0.3s ease;
   animation: float 3s ease-in-out infinite;
   cursor: pointer;
 }
 
-
 .skill-icon-container:hover {
   transform: translateY(-10px) scale(1.1);
 }
-
 
 .skill-tooltip {
   position: absolute;
@@ -73,7 +71,6 @@
   opacity: 1;
   transform: translateY(0);
 }
-
 
 @keyframes float {
   0% {

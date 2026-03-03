@@ -7,6 +7,7 @@ import Loading from "./components/Loading";
 import Cursor from "./components/Cursor";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <About />
           <Education/>
           <Skills/>
+          <Contact/>
           <SocialSection />
         
         </>
