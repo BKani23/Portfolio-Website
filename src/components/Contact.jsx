@@ -188,6 +188,7 @@ const Contact = () => {
                           }
                           onClick={() => setActiveLine(i + 1)}
                         >
+                          {activeLine === i + 1 && <span className="caret" />}
                           {line
                             .split(/(\s+|".*?"|'.*?'|`.*?`|[{}=:,])/g)
                             .map((part, j) => {

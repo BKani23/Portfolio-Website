@@ -187,6 +187,21 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 20px;
+  background: #fff;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
 /* Focus State */
 
 .form-group input:focus,
