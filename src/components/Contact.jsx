@@ -72,7 +72,7 @@ const Contact = () => {
     const { name, email, message } = formData;
   
     if (!name.trim() || !email.trim() || !message.trim()) {
-      toast.error("❌ All fields are required.");
+      toast.error("All fields are required.");
       return;
     }
   
@@ -84,6 +84,12 @@ const Contact = () => {
     }
   
     toast.success("Script executed successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    })
   };
 
   // Compute codeString with formData
