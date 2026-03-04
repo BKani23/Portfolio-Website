@@ -16,9 +16,45 @@ const activityIcons = [
   { icon: BsGit, label: "Source Control" },
 ];
 
+
+const contactCodeHeader = `import { sendToServer } from './api.js';\n\n`;
+
+const contactCodeBody = (formData) => `
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const newMessage = {
+    name: "${formData.name}",   // click here and type your name
+    email: "${formData.email}", // click here and type your email
+    message: "${formData.message}" // click here and type your message
+  };
+
+  try {
+    const response = await sendToServer(newMessage);
+    console.log("Message sent successfully:", response);
+  } catch (error) {
+    console.error("Failed to send message:", error);
+  }
+};
+`;
+
+const apiString = `import axios from "axios";
+
+export const sendToServer = async (data) => {
+  try {
+    const response = await axios.post("/api/contact", data, {
+      headers: { "Content-Type": "application/json" }
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error sending message:", error);
+    throw error;
+  }
+};`;
+
 const Contact = () => {
   const [mode, setMode] = useState("standard");
-
+  const [activeTab, setActiveTab] = useState("contact.js");
   const [activeLine, setActiveLine] = useState(2);
 
   const [formData, setFormData] = useState({
@@ -27,11 +63,8 @@ const Contact = () => {
     message: "",
   });
 
-  const codeString = `const newMessage = {
-    name: "${formData.name || "Your Name"}",
-    email: "${formData.email || "user@example.com"}",
-    message: "${formData.message || "Message content..."}"
-  };`;
+  // Compute codeString with formData
+  const codeString = contactCodeHeader + contactCodeBody(formData);
 
   return (
     <section className="contact-section contact">
@@ -51,7 +84,6 @@ const Contact = () => {
           >
             Standard
           </button>
-
           <button
             className={mode === "developer" ? "active" : ""}
             onClick={() => setMode("developer")}
@@ -160,78 +192,165 @@ const Contact = () => {
                     <div className="subfolder">
                       <IoIosArrowDown /> src{" "}
                       <div className="file">contact.tsx</div>
+                      <div className="file">api.js</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="code-editor-panel">
                   <div className="tabs">
-                    <div className="tab active">contact.jsx</div>
+                    <div
+                      className={`tab ${activeTab === "contact.js" ? "active" : ""}`}
+                      onClick={() => setActiveTab("contact.js")}
+                    >
+                      contact.jsx
+                    </div>
+                    <div
+                      className={`tab ${activeTab === "api.js" ? "active" : ""}`}
+                      onClick={() => setActiveTab("api.js")}
+                    >
+                      api.js
+                    </div>
                   </div>
 
                   <div className="code-with-lines">
                     <div className="line-numbers">
-                      {codeString.split("\n").map((_, i) => (
-                        <span key={i}>{i + 1}</span>
-                      ))}
+                      {(activeTab === "contact.js" ? codeString : apiString)
+                        .split("\n")
+                        .map((_, i) => (
+                          <span key={i}>{i + 1}</span>
+                        ))}
                     </div>
 
                     <pre className="code-content">
-                      {codeString.split("\n").map((line, i) => (
-                        <div
-                          div
-                          key={i}
-                          className={
-                            activeLine === i + 1
-                              ? "code-line active-line"
-                              : "code-line"
-                          }
-                          onClick={() => setActiveLine(i + 1)}
-                        >
-                          {activeLine === i + 1 && <span className="caret" />}
-                          {line
-                            .split(/(\s+|".*?"|'.*?'|`.*?`|[{}=:,])/g)
-                            .map((part, j) => {
+                      {(activeTab === "contact.js" ? codeString : apiString)
+                        .split("\n")
+                        .map((line, i) => (
+                          <div
+                            key={i}
+                            className={
+                              activeLine === i + 1
+                                ? "code-line active-line"
+                                : "code-line"
+                            }
+                            onClick={() => setActiveLine(i + 1)}
+                          >
+                            {activeLine === i + 1 && <span className="caret" />}
+                            {line.split(/(\s+|[{}=:,])/g).map((part, j) => {
                               if (!part) return null;
 
-                              if (/^["'`].*["'`]$/.test(part)) {
+                              if (part === `"${formData.name}"`) {
                                 return (
-                                  <span key={j} style={{ color: "#CE9178" }}>
-                                    {part}
+                                  <span
+                                    key={j}
+                                    style={{
+                                      color: "#CE9178",
+                                      opacity: formData.name ? 1 : 0.4,
+                                      cursor: "text",
+                                    }}
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onInput={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        name: e.currentTarget.textContent.replace(
+                                          /"/g,
+                                          "",
+                                        ),
+                                      })
+                                    }
+                                  >
+                                    "{formData.name || "Your Name"}"
                                   </span>
                                 );
                               }
 
-                              if (/^(const|let|var)$/.test(part)) {
+                              if (part === `"${formData.email}"`) {
+                                return (
+                                  <span
+                                    key={j}
+                                    style={{
+                                      color: "#CE9178",
+                                      opacity: formData.email ? 1 : 0.4,
+                                      cursor: "text",
+                                    }}
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onInput={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        email:
+                                          e.currentTarget.textContent.replace(
+                                            /"/g,
+                                            "",
+                                          ),
+                                      })
+                                    }
+                                  >
+                                    "{formData.email || "user@example.com"}"
+                                  </span>
+                                );
+                              }
+
+                              if (part === `"${formData.message}"`) {
+                                return (
+                                  <span
+                                    key={j}
+                                    style={{
+                                      color: "#CE9178",
+                                      opacity: formData.message ? 1 : 0.4,
+                                      cursor: "text",
+                                    }}
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    onInput={(e) =>
+                                      setFormData({
+                                        ...formData,
+                                        message:
+                                          e.currentTarget.textContent.replace(
+                                            /"/g,
+                                            "",
+                                          ),
+                                      })
+                                    }
+                                  >
+                                    "{formData.message || "Message content..."}"
+                                  </span>
+                                );
+                              }
+
+                              // default syntax highlighting
+                              if (
+                                /^(const|let|var|export|return|async|await|import|from)$/.test(
+                                  part,
+                                )
+                              )
                                 return (
                                   <span key={j} style={{ color: "#569CD6" }}>
                                     {part}
                                   </span>
                                 );
-                              }
-
-                              
-                              if (/^(name|email|message)$/.test(part)) {
+                              if (
+                                /^(name|email|message|sendToServer|data)$/.test(
+                                  part,
+                                )
+                              )
                                 return (
                                   <span key={j} style={{ color: "#9CDCFE" }}>
                                     {part}
                                   </span>
                                 );
-                              }
-
-                             //Variable names
-                              if (/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(part)) {
+                              if (/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(part))
                                 return (
                                   <span key={j} style={{ color: "#4EC9B0" }}>
                                     {part}
                                   </span>
                                 );
-                              }
 
                               return part;
                             })}
-                        </div>
-                      ))}
+                          </div>
+                        ))}
                     </pre>
                   </div>
 
