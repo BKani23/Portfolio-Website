@@ -53,10 +53,7 @@ export const sendToServer = async (data) => {
   }
 };`;
 
-
-
 const Contact = () => {
-
   const [mode, setMode] = useState("standard");
   const [activeTab, setActiveTab] = useState("contact.js");
   const [activeLine, setActiveLine] = useState(2);
@@ -68,28 +65,27 @@ const Contact = () => {
   });
 
   const validateAndRun = () => {
-  
     const { name, email, message } = formData;
-  
+
     if (!name.trim() || !email.trim() || !message.trim()) {
       toast.error("All fields are required.");
       return;
     }
-  
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address.");
       return;
     }
-  
+
     toast.success("Script executed successfully!");
 
     setFormData({
       name: "",
       email: "",
       message: "",
-    })
+    });
   };
 
   // Compute codeString with formData
@@ -220,8 +216,16 @@ const Contact = () => {
                     <span className="portfolio-text">PORTFOLIO</span>
                     <div className="subfolder">
                       <IoIosArrowDown /> src{" "}
-                      <div className="file">contact.tsx</div>
-                      <div className="file">api.js</div>
+                      <div
+                        className={`file ${activeTab === "contact.js" ? "active-file" : ""}`}
+                      >
+                        contact.tsx
+                      </div>
+                      <div
+                        className={`file ${activeTab === "api.js" ? "active-file" : ""}`}
+                      >
+                        api.js
+                      </div>
                     </div>
                   </div>
                 </div>
