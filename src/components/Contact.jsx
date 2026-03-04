@@ -218,11 +218,13 @@ const Contact = () => {
                       <IoIosArrowDown /> src{" "}
                       <div
                         className={`file ${activeTab === "contact.js" ? "active-file" : ""}`}
+                        onClick={() => setActiveTab("contact.js")}
                       >
                         contact.tsx
                       </div>
                       <div
                         className={`file ${activeTab === "api.js" ? "active-file" : ""}`}
+                        onClick={() => setActiveTab("api.js")}
                       >
                         api.js
                       </div>
