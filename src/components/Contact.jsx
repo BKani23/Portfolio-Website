@@ -57,6 +57,7 @@ const Contact = () => {
   const [mode, setMode] = useState("standard");
   const [activeTab, setActiveTab] = useState("contact.js");
   const [activeLine, setActiveLine] = useState(2);
+  const [isSrcCollapsed, setIsSrcCollapsed] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -215,19 +216,61 @@ const Contact = () => {
                     <IoIosArrowDown color=" lab(65.0361 -1.42065 -56.9802)" />
                     <span className="portfolio-text">PORTFOLIO</span>
                     <div className="subfolder">
-                      <IoIosArrowDown /> src{" "}
                       <div
-                        className={`file ${activeTab === "contact.js" ? "active-file" : ""}`}
-                        onClick={() => setActiveTab("contact.js")}
+                        className="folder-header"
+                        onClick={() => setIsSrcCollapsed(!isSrcCollapsed)}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          cursor: "pointer",
+                        }}
                       >
-                        contact.tsx
+                        <IoIosArrowDown
+                          style={{
+                            transform: isSrcCollapsed
+                              ? "rotate(-90deg)"
+                              : "rotate(-360deg)",
+                            transition: "transform 0.2s ease",
+                          }}
+                        />
+                        <span style={{ marginLeft: 4 }}>src</span>
                       </div>
-                      <div
-                        className={`file ${activeTab === "api.js" ? "active-file" : ""}`}
-                        onClick={() => setActiveTab("api.js")}
-                      >
-                        api.js
-                      </div>
+
+                      {!isSrcCollapsed && (
+                        <div
+                          className="folder-files"
+                          style={{ paddingLeft: 16 }}
+                        >
+                          <div
+                            className={`file ${activeTab === "contact.js" ? "active-file" : ""}`}
+                            onClick={() => setActiveTab("contact.js")}
+                          >
+                            <AiOutlineFile
+                              style={{
+                                marginRight: 6,
+                                color:
+                                  activeTab === "contact.js"
+                                    ? "orange"
+                                    : "#d4d4d4",
+                              }}
+                            />
+                            contact.tsx
+                          </div>
+                          <div
+                            className={`file ${activeTab === "api.js" ? "active-file" : ""}`}
+                            onClick={() => setActiveTab("api.js")}
+                          >
+                            <AiOutlineFile
+                              style={{
+                                marginRight: 6,
+                                color:
+                                  activeTab === "api.js" ? "orange" : "#d4d4d4",
+                              }}
+                            />
+                            api.js
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

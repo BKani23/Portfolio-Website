@@ -186,6 +186,16 @@
   font-weight: 600;
 }
 
+.file {
+  display: flex;          /* makes icon and filename inline */
+  align-items: center;    /* vertically center icon with text */
+  gap: 6px;               /* space between icon and filename */
+  padding-left: 12px;
+  margin: 2px 0;
+  cursor: pointer;
+  white-space: nowrap;    /* prevents filename wrapping */
+}
+
 .caret {
   display: inline-block;
   width: 2px;
@@ -369,7 +379,7 @@
 }
   
 .explorer-panel {
-  width: 150px;
+  width: 180px;
   background: rgb(23, 23, 23);
   padding: 10px;
   font-size: 13px;
@@ -392,12 +402,7 @@
   margin-right: 4px;
 }
 
-.file::before {
-  content: "📄";
-  display: inline-block;
-  width: 14px;
-  margin-right: 4px;
-}
+
 
 
 .file:hover {
