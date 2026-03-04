@@ -16,7 +16,6 @@ const activityIcons = [
   { icon: BsGit, label: "Source Control" },
 ];
 
-
 const contactCodeHeader = `import { sendToServer } from './api.js';\n\n`;
 
 const contactCodeBody = (formData) => `
@@ -235,86 +234,56 @@ const Contact = () => {
                             }
                             onClick={() => setActiveLine(i + 1)}
                           >
-                            {activeLine === i + 1 && <span className="caret" />}
+                            {/* {" "}
+                            {activeLine === i + 1 && <span className="caret" />} */}
                             {line.split(/(\s+|[{}=:,])/g).map((part, j) => {
                               if (!part) return null;
 
-                              if (part === `"${formData.name}"`) {
-                                return (
-                                  <span
-                                    key={j}
-                                    style={{
-                                      color: "#CE9178",
-                                      opacity: formData.name ? 1 : 0.4,
-                                      cursor: "text",
-                                    }}
-                                    contentEditable
-                                    suppressContentEditableWarning
-                                    onInput={(e) =>
-                                      setFormData({
-                                        ...formData,
-                                        name: e.currentTarget.textContent.replace(
-                                          /"/g,
-                                          "",
-                                        ),
-                                      })
-                                    }
-                                  >
-                                    "{formData.name || "Your Name"}"
-                                  </span>
-                                );
-                              }
+                              const fields = ["name", "email", "message"];
+                              const placeholderMap = {
+                                name: "Your Name",
+                                email: "user@example.com",
+                                message: "Message content...",
+                              };
 
-                              if (part === `"${formData.email}"`) {
-                                return (
-                                  <span
-                                    key={j}
-                                    style={{
-                                      color: "#CE9178",
-                                      opacity: formData.email ? 1 : 0.4,
-                                      cursor: "text",
-                                    }}
-                                    contentEditable
-                                    suppressContentEditableWarning
-                                    onInput={(e) =>
-                                      setFormData({
-                                        ...formData,
-                                        email:
-                                          e.currentTarget.textContent.replace(
-                                            /"/g,
-                                            "",
-                                          ),
-                                      })
-                                    }
-                                  >
-                                    "{formData.email || "user@example.com"}"
-                                  </span>
+                              if (
+                                fields.some((f) => part === `"${formData[f]}"`)
+                              ) {
+                                const field = fields.find(
+                                  (f) => part === `"${formData[f]}"`,
                                 );
-                              }
+                                const value = formData[field];
 
-                              if (part === `"${formData.message}"`) {
                                 return (
                                   <span
-                                    key={j}
+                                    key={field + j}
                                     style={{
                                       color: "#CE9178",
-                                      opacity: formData.message ? 1 : 0.4,
+                                      opacity: value ? 1 : 0.4,
                                       cursor: "text",
+                                      direction: "ltr",
+                                      unicodeBidi: "plaintext",
+                                      display: "inline-block", // important
+                                      minWidth: "1ch", // important
                                     }}
                                     contentEditable
                                     suppressContentEditableWarning
-                                    onInput={(e) =>
+                                    onFocus={(e) => {
+                                      const range = document.createRange();
+                                      range.selectNodeContents(e.currentTarget);
+                                      const sel = window.getSelection();
+                                      sel.removeAllRanges();
+                                      sel.addRange(range);
+                                    }}
+                                    onInput={(e) => {
                                       setFormData({
                                         ...formData,
-                                        message:
-                                          e.currentTarget.textContent.replace(
-                                            /"/g,
-                                            "",
-                                          ),
-                                      })
-                                    }
+                                        [field]:
+                                          e.currentTarget.textContent.trim(),
+                                      });
+                                    }}
                                   >
-                                    "{formData.message || "Message content..."}"
+                                    {value || placeholderMap[field]}
                                   </span>
                                 );
                               }
