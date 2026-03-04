@@ -1,6 +1,5 @@
-
 .contact-section {
-  min-height: 100vh; 
+  min-height: 100vh;
   width: 100%;
   background: #070707;
   display: flex;
@@ -79,7 +78,7 @@
   background: linear-gradient(90deg, #ff9900, #ffffff);
   background-size: 200% auto;
   animation: shimmer 4s linear infinite;
-  margin: 15px auto 80px auto; 
+  margin: 15px auto 80px auto;
 }
 
 /*  Form Layout  */
@@ -91,7 +90,6 @@
   flex-direction: column;
   gap: 30px;
 }
-
 
 .form-row {
   display: flex;
@@ -105,7 +103,7 @@
 
 .form-row .form-group {
   flex: 1;
-  min-width: 200px; /* ensures columns don't shrink too much */
+  min-width: 200px; 
 }
 
 /* Floating Label Group  */
@@ -132,88 +130,63 @@
   resize: none;
 }
 .code-content .keyword {
-  color: #569cd6; 
+  color: #569cd6;
   font-weight: 500;
 }
 
 .code-content .property {
-  color: #9cdcfe; 
+  color: #9cdcfe;
 }
 
 .code-content .string {
-  color: #ce9178; 
+  color: #ce9178;
 }
 
 .code-content .number {
-  color: #b5cea8; 
+  color: #b5cea8;
 }
 
 .code-content .boolean {
-  color: #569cd6; 
+  color: #569cd6;
 }
 
 .code-content .punctuation {
-  color: #d4d4d4; 
-}
-
-.code-with-lines {
-  display: flex;
-  background: #1e1e1e;
-  flex: 1;
-  overflow: hidden;
-  font-family: 'Fira Code', monospace;
-}
-
-.line-numbers {
-  background: #2d2d2d;
-  color: #555;
-  padding: 12px 8px;
-  text-align: right;
-  user-select: none;
-}
-
-.line-numbers span {
-  display: block;
-  height: 18px; /* match code line height */
-}
-
-.code-content {
-  flex: 1;
-  padding: 12px;
   color: #d4d4d4;
-  overflow-y: auto;
-  white-space: pre-wrap;
 }
-
-
 .code-with-lines {
   display: flex;
-  background: #1e1e1e;
-  border-radius: 5px;
-  overflow: hidden;
+  flex: 1;
+  overflow: auto;
+  background-color: rgb(15, 15, 15);
+  font-size: 0.8em;
 }
 
 .line-numbers {
   padding: 12px 8px;
-  background: #252526;
-  color: #858585;
   text-align: right;
   user-select: none;
+  line-height: 25px;
 }
 
 .line-numbers span {
   display: block;
-  line-height: 1.5em;
 }
 
 .code-content {
-  flex: 1;
   padding: 12px;
-  font-family: 'Fira Code', monospace;
-  font-size: 13px;
-  color: #d4d4d4;
-  white-space: pre-wrap;
+  line-height: 25px;
+  white-space: pre;
+  min-width: max-content;
 }
+
+.code-line {
+  position: relative;
+}
+
+.active-line {
+  background: rgba(255, 255, 255, 0.05);
+}
+
 /* Focus State */
 
 .form-group input:focus,
@@ -221,8 +194,6 @@
   border-color: orange;
   box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
 }
-
-
 
 .form-group label {
   position: absolute;
@@ -236,8 +207,6 @@
   padding: 0 5px;
 }
 
-
-
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label,
 .form-group textarea:focus + label,
@@ -247,8 +216,6 @@
   font-size: 12px;
   color: orange;
 }
-
-
 
 .submit-btn {
   margin-top: 10px;
@@ -283,10 +250,10 @@
   flex-direction: column;
   height: 400px;
   width: 100%;
-  background: #1e1e1e; 
+  background: #1e1e1e;
   border-radius: 8px;
   overflow: hidden;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   color: #d4d4d4;
 }
 
@@ -314,9 +281,15 @@
   display: inline-block;
 }
 
-.circle.red { background: #ff605c; }
-.circle.yellow { background: #ffbd44; }
-.circle.green { background: #00ca4e; }
+.circle.red {
+  background: #ff605c;
+}
+.circle.yellow {
+  background: #ffbd44;
+}
+.circle.green {
+  background: #00ca4e;
+}
 
 .breadcrumb {
   flex: 1;
@@ -339,15 +312,13 @@
   overflow: hidden;
 }
 
-
-.activity-bar {
-  width: 50px;
-  background: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  gap: 15px;
+.activity-bar .icon {
+  font-size: 22px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 8px 6px;
+  border-left: 3px solid transparent;
+  transition: background 0.2s, color 0.2s;
 }
 
 .activity-bar .icon {
@@ -356,33 +327,51 @@
   cursor: pointer;
   padding: 6px;
   border-radius: 4px;
-  transition: "background" 0.2s, color 0.2s;
+  transform: scale(1.05);
+  transition:
+    "background" 0.2s,
+    color 0.2s;
 }
 
-.activity-bar .icon:hover,
 .activity-bar .icon.active {
-  background: #0e639c;
+  border-left: 6px solid #0e639c; 
   color: #fff;
+  background: rgba(255, 255, 255, 0.05);
 }
 
+.activity-bar .icon:hover{
+  color: #fff;
+  transform: scale(1.2);
+}
 
+.explorer-text{
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.portfolio-text{
+  color: lab(65.0361 -1.42065 -56.9802);
+}
+  
 .explorer-panel {
-  width: 220px;
-  background: #252526;
+  width: 150px;
+  background: rgb(23, 23, 23);
   padding: 10px;
   font-size: 13px;
   color: #d4d4d4;
   overflow-y: auto;
 }
 
-.folder, .subfolder, .file {
+.folder,
+.subfolder,
+.file {
   padding-left: 12px;
   margin: 2px 0;
 }
 
 .folder.collapsed::before,
 .subfolder::before {
-  /* content: '▾'; */
   display: inline-block;
   width: 14px;
   color: #ccc;
@@ -390,34 +379,33 @@
 }
 
 .file::before {
-  content: '📄';
+  content: "📄";
   display: inline-block;
   width: 14px;
   margin-right: 4px;
 }
 
-
-.folder:hover, .subfolder:hover, .file:hover {
+.folder:hover,
+.subfolder:hover,
+.file:hover {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   cursor: pointer;
 }
 
-
 .code-editor-panel {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #1e1e1e;
+  background: rgb(23, 23, 23);
   color: #d4d4d4;
   padding: 0;
   overflow: hidden;
 }
 
-
 .tabs {
   display: flex;
-  background: #2d2d2d;
+  background: rgb(23, 23, 23);
   height: 28px;
   gap: 2px;
   padding-left: 5px;
@@ -435,26 +423,27 @@
 
 .tab.active {
   background: #1e1e1e;
-  border-bottom: 2px solid #0e639c;
+  border-top: 2px solid #0e639c;
   color: #fff;
 }
 
-
 .code-content {
   flex: 1;
-  background: #1e1e1e;
+  line-height: 25px;
+  background: rgb(15, 15, 15);
   color: #d4d4d4;
   padding: 12px;
-  font-family: 'Fira Code', monospace;
-  font-size: 13px;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
   overflow-y: auto;
-  white-space: pre-wrap;
+  white-space: pre;
+  overflow-x: auto
 }
 
 .run-script {
   display: inline-flex;
   align-items: center;
-  gap: 6px; 
+  gap: 6px;
   position: absolute;
   bottom: 12px;
   right: 12px;

@@ -19,14 +19,16 @@ const activityIcons = [
 const Contact = () => {
   const [mode, setMode] = useState("standard");
 
+  const [activeLine, setActiveLine] = useState(2);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const codeString = `const sendMessage = {
-    name: "${formData.name || "User Name"}",
+  const codeString = `const newMessage = {
+    name: "${formData.name || "Your Name"}",
     email: "${formData.email || "user@example.com"}",
     message: "${formData.message || "Message content..."}"
   };`;
@@ -139,7 +141,11 @@ const Contact = () => {
                   {activityIcons.map((item, index) => {
                     const IconComponent = item.icon;
                     return (
-                      <div key={index} className="icon" title={item.label}>
+                      <div
+                        key={index}
+                        className={`icon ${index === 0 ? "active" : ""}`}
+                        title={item.label}
+                      >
                         <IconComponent size={24} />
                       </div>
                     );
@@ -148,8 +154,9 @@ const Contact = () => {
 
                 <div className="explorer-panel">
                   <div className="folder collapsed">
-                    <IoIosArrowDown />
-                    Portfolio
+                    <p className="explorer-text">EXPLORER</p>
+                    <IoIosArrowDown color=" lab(65.0361 -1.42065 -56.9802)" />
+                    <span className="portfolio-text">PORTFOLIO</span>
                     <div className="subfolder">
                       <IoIosArrowDown /> src{" "}
                       <div className="file">contact.tsx</div>
@@ -159,7 +166,7 @@ const Contact = () => {
 
                 <div className="code-editor-panel">
                   <div className="tabs">
-                    <div className="tab active">contact.tsx</div>
+                    <div className="tab active">contact.jsx</div>
                   </div>
 
                   <div className="code-with-lines">
@@ -171,41 +178,64 @@ const Contact = () => {
 
                     <pre className="code-content">
                       {codeString.split("\n").map((line, i) => (
-                        <div key={i}>
-                          {line.split(/(".*?"|'.*?'|`.*?`)/g).map((part, j) => {
-                            // strings in orange
-                            if (/^["'`].*["'`]$/.test(part)) {
-                              return (
-                                <span key={j} style={{ color: "#CE9178" }}>
-                                  {part}
-                                </span>
-                              );
-                            }
-                            // keywords like const, let, var
-                            if (/\b(const|let|var)\b/.test(part)) {
-                              return (
-                                <span key={j} style={{ color: "#569CD6" }}>
-                                  {part}
-                                </span>
-                              );
-                            }
-                            // property names
-                            if (/\b(name|email|message)\b/.test(part)) {
-                              return (
-                                <span key={j} style={{ color: "#9CDCFE" }}>
-                                  {part}
-                                </span>
-                              );
-                            }
-                            return part;
-                          })}
+                        <div
+                          div
+                          key={i}
+                          className={
+                            activeLine === i + 1
+                              ? "code-line active-line"
+                              : "code-line"
+                          }
+                          onClick={() => setActiveLine(i + 1)}
+                        >
+                          {line
+                            .split(/(\s+|".*?"|'.*?'|`.*?`|[{}=:,])/g)
+                            .map((part, j) => {
+                              if (!part) return null;
+
+                              if (/^["'`].*["'`]$/.test(part)) {
+                                return (
+                                  <span key={j} style={{ color: "#CE9178" }}>
+                                    {part}
+                                  </span>
+                                );
+                              }
+
+                              if (/^(const|let|var)$/.test(part)) {
+                                return (
+                                  <span key={j} style={{ color: "#569CD6" }}>
+                                    {part}
+                                  </span>
+                                );
+                              }
+
+                              
+                              if (/^(name|email|message)$/.test(part)) {
+                                return (
+                                  <span key={j} style={{ color: "#9CDCFE" }}>
+                                    {part}
+                                  </span>
+                                );
+                              }
+
+                             //Variable names
+                              if (/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(part)) {
+                                return (
+                                  <span key={j} style={{ color: "#4EC9B0" }}>
+                                    {part}
+                                  </span>
+                                );
+                              }
+
+                              return part;
+                            })}
                         </div>
                       ))}
                     </pre>
                   </div>
 
                   <button className="run-script">
-                    <FaPlay color="#fff" />
+                    <FaPlay color="#4bf417" />
                     Run Script
                   </button>
                 </div>
