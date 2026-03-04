@@ -172,13 +172,6 @@
   display: block;
 }
 
-.code-content {
-  padding: 12px;
-  line-height: 25px;
-  white-space: pre;
-  min-width: max-content;
-}
-
 .code-line {
   position: relative;
 }
@@ -450,9 +443,8 @@
   padding: 12px;
   font-family: "Fira Code", monospace;
   font-size: 16px;
-  overflow-y: auto;
   white-space: pre;
-  overflow-x: auto
+  min-width: max-content;
 }
 
 .run-script {

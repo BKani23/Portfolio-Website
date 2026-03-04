@@ -25,9 +25,9 @@ const contactCodeBody = (formData) => `
 const handleSubmit = async (e) => {
   e.preventDefault();
   const newMessage = {
-    name: "${formData.name}",   // click here and type your name
-    email: "${formData.email}", // click here and type your email
-    message: "${formData.message}" // click here and type your message
+    name: "${formData.name}",   // click here and type your Name
+    email: "${formData.email}", // click here and type your Email
+    message: "${formData.message}" // click here and type your Message
   };
 
   try {
