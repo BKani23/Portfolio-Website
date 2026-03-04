@@ -7,6 +7,8 @@ import { RiAppsLine } from "react-icons/ri";
 import { BsGit } from "react-icons/bs";
 import { FaPlay } from "react-icons/fa";
 import { IoIosSearch, IoIosArrowDown } from "react-icons/io";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const activityIcons = [
   { icon: MdOutlineFolderOpen, label: "Explorer" },
@@ -51,7 +53,10 @@ export const sendToServer = async (data) => {
   }
 };`;
 
+
+
 const Contact = () => {
+
   const [mode, setMode] = useState("standard");
   const [activeTab, setActiveTab] = useState("contact.js");
   const [activeLine, setActiveLine] = useState(2);
@@ -61,6 +66,25 @@ const Contact = () => {
     email: "",
     message: "",
   });
+
+  const validateAndRun = () => {
+  
+    const { name, email, message } = formData;
+  
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      toast.error("❌ All fields are required.");
+      return;
+    }
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+  
+    toast.success("Script executed successfully!");
+  };
 
   // Compute codeString with formData
   const codeString = contactCodeHeader + contactCodeBody(formData);
@@ -323,10 +347,16 @@ const Contact = () => {
                     </pre>
                   </div>
 
-                  <button className="run-script">
+                  <button className="run-script" onClick={validateAndRun}>
                     <FaPlay color="#4bf417" />
                     Run Script
                   </button>
+
+                  <ToastContainer
+                    position="top-right"
+                    autoClose={3000}
+                    theme="dark"
+                  />
                 </div>
               </div>
             </div>
