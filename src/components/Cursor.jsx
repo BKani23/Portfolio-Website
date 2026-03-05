@@ -31,9 +31,8 @@ const Cursor = () => {
     };
     loop();
 
-    // Hover effects
-    const interactiveElements = document.querySelectorAll("[data-cursor]");
-    interactiveElements.forEach((el) => {
+    // Hover effects for elements with [data-cursor]
+    const attachHover = (el) => {
       el.addEventListener("mouseover", () => {
         const type = el.dataset.cursor;
         if (type === "icons") {
@@ -49,12 +48,30 @@ const Cursor = () => {
         cursor.classList.remove("cursor-icons", "cursor-disable");
         hover = false;
       });
+    };
+
+    // attach to existing elements
+    document.querySelectorAll("[data-cursor]").forEach(attachHover);
+
+    // observe new elements added dynamically
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1 && node.dataset.cursor) attachHover(node);
+          node.querySelectorAll?.("[data-cursor]").forEach(attachHover);
+        });
+      });
     });
 
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // cleanup
     return () => {
       document.removeEventListener("mousemove", mouseMoveHandler);
       cancelAnimationFrame(requestRef.current);
+      observer.disconnect();
     };
+
   }, []);
 
   return <div className="cursor-main" ref={cursorRef}></div>;

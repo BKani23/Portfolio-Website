@@ -175,7 +175,7 @@ const Contact = () => {
               </form>
             </div>
           ) : (
-            <div className="dev-mode-container">
+            <div className="dev-mode-container" data-cursor="disable">
               <div className="dev-top-bar">
                 <div className="window-circles">
                   <span className="circle red"></span>
@@ -196,7 +196,7 @@ const Contact = () => {
               </div>
 
               <div className="dev-main-row">
-                <div className="activity-bar">
+                <div className="activity-bar" data-cursor="disable">
                   {activityIcons.map((item, index) => {
                     const IconComponent = item.icon;
                     return (
@@ -211,7 +211,7 @@ const Contact = () => {
                   })}
                 </div>
 
-                <div className="explorer-panel">
+                <div className="explorer-panel" data-cursor="disable">
                   <p className="explorer-text">EXPLORER</p>
 
                   {/* Root Portfolio Folder */}
@@ -308,7 +308,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="code-editor-panel">
+                <div className="code-editor-panel"  data-cursor="disable">
                   <div className="tabs">
                     <div
                       className={`tab ${activeTab === "contact.js" ? "active" : ""}`}
