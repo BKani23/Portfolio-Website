@@ -70,22 +70,31 @@ const Contact = () => {
   const handleSubmit = async (e) => {
 
     if (e) e.preventDefault();
-
+  
     const { name, email, message } = formData;
-
+  
     if (!name.trim() || !email.trim() || !message.trim()) {
-      toast.error("All fields are required.");
+      toast.dismiss();
+      toast.error(
+        mode === "developer"
+          ? "Cannot run script: all fields are required."
+          : "All fields are required."
+      );
       return;
     }
-
+  
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  
     if (!emailRegex.test(email)) {
       toast.dismiss();
-      toast.error("Please enter a valid email address.");
+      toast.error(
+        mode === "developer"
+          ? "Cannot run script: invalid email."
+          : "Please enter a valid email address."
+      );
       return;
     }
-
+  
     try {
       const response = await fetch("https://formspree.io/f/xojkalao", {
         method: "POST",
@@ -95,23 +104,35 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
         toast.dismiss();
-        toast.success("Message sent successfully!");
-
-        setFormData({
+        toast.success(
+          mode === "developer"
+            ? "Script executed successfully!"
+            : "Message sent successfully!"
+        );
+  
+       setFormData({
           name: "",
           email: "",
           message: "",
         });
       } else {
         toast.dismiss();
-        toast.error("Failed to send message.");
+        toast.error(
+          mode === "developer"
+            ? "Script execution failed."
+            : "Failed to send message."
+        );
       }
     } catch (error) {
       toast.dismiss();
-      toast.error("Something went wrong.");
+      toast.error(
+        mode === "developer"
+          ? "Script execution encountered an error."
+          : "Something went wrong."
+      );
     }
   };
 
