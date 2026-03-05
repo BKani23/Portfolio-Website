@@ -3,6 +3,7 @@ import "../styles/Loading.css";
 import Marquee from "react-fast-marquee";
 
 const Loading = ({ onFinish }) => {
+  
   const [percent, setPercent] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
