@@ -54,6 +54,7 @@ export const sendToServer = async (data) => {
 };`;
 
 const Contact = () => {
+  
   const [mode, setMode] = useState("standard");
   const [activeTab, setActiveTab] = useState("contact.js");
   const [activeLine, setActiveLine] = useState(2);
@@ -66,7 +67,10 @@ const Contact = () => {
     message: "",
   });
 
-  const validateAndRun = () => {
+  const handleSubmit = async (e) => {
+
+    if (e) e.preventDefault();
+
     const { name, email, message } = formData;
 
     if (!name.trim() || !email.trim() || !message.trim()) {
@@ -77,17 +81,38 @@ const Contact = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
+      toast.dismiss();
       toast.error("Please enter a valid email address.");
       return;
     }
 
-    toast.success("Script executed successfully!");
+    try {
+      const response = await fetch("https://formspree.io/f/xojkalao", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
+      if (response.ok) {
+        toast.dismiss();
+        toast.success("Message sent successfully!");
+
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        toast.dismiss();
+        toast.error("Failed to send message.");
+      }
+    } catch (error) {
+      toast.dismiss();
+      toast.error("Something went wrong.");
+    }
   };
 
   // Compute codeString with formData
@@ -122,13 +147,12 @@ const Contact = () => {
         <div className="contact-content">
           {mode === "standard" ? (
             <div className="standard-placeholder">
-              <form className="contact-form">
+              <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className="form-row">
                   <div className="form-group">
                     <input
                       type="text"
                       name="name"
-                      required
                       placeholder=" "
                       value={formData.name}
                       onChange={(e) =>
@@ -142,7 +166,6 @@ const Contact = () => {
                     <input
                       type="email"
                       name="email"
-                      required
                       placeholder=" "
                       value={formData.email}
                       onChange={(e) =>
@@ -158,7 +181,6 @@ const Contact = () => {
                     <textarea
                       name="message"
                       rows="5"
-                      required
                       placeholder=" "
                       value={formData.message}
                       onChange={(e) =>
@@ -308,7 +330,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="code-editor-panel"  data-cursor="disable">
+                <div className="code-editor-panel" data-cursor="disable">
                   <div className="tabs">
                     <div
                       className={`tab ${activeTab === "contact.js" ? "active" : ""}`}
@@ -435,22 +457,20 @@ const Contact = () => {
                     </pre>
                   </div>
 
-                  <button className="run-script" onClick={validateAndRun}>
+                  <button className="run-script" onClick={handleSubmit}>
                     <FaPlay color="#4bf417" />
                     Run Script
                   </button>
 
-                  <ToastContainer
-                    position="top-right"
-                    autoClose={3000}
-                    theme="dark"
-                  />
+           
                 </div>
               </div>
             </div>
           )}
         </div>
       </div>
+
+      <ToastContainer position="top-right" autoClose={3000} theme="dark" />
     </section>
   );
 };
