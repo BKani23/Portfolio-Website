@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code&display=swap');
+
 .contact-section {
   min-height: 100vh;
   width: 100%;
@@ -75,6 +78,13 @@
 
 .dev-slide {
   padding: 0;
+}
+
+.code-content,
+.code-content .code-line,
+.code-content .code-line span {
+  font-family: 'Cascadia Code', monospace;
+  font-size: 0.9em;
 }
 
 /* Move to developer mode */
@@ -325,7 +335,7 @@
   background: #1e1e1e;
   border-radius: 8px;
   overflow: hidden;
-  font-family: "Fira Code", monospace;
+  font-family: 'Audiowide', cursive; 
   color: #d4d4d4;
 }
 
@@ -384,14 +394,17 @@
   overflow: hidden;
 }
 
-.activity-bar .icon {
-  font-size: 22px;
-  color: #ccc;
-  cursor: pointer;
-  padding: 8px 6px;
-  border-left: 3px solid transparent;
-  transition: background 0.2s, color 0.2s;
+.activity-bar {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  align-items: center;
 }
+
+.activity-bar .icon.settings {
+  margin-top: auto; /* pushes this icon to the bottom */
+}
+
 
 .activity-bar .icon {
   font-size: 22px;
@@ -424,16 +437,18 @@
 
 .portfolio-text{
   color: lab(65.0361 -1.42065 -56.9802);
+  margin-left: 4px;
 }
   
 
 .explorer-panel {
-  width: 180px;
+  width: 200px;
   background: rgb(23, 23, 23);
   padding: 10px;
   font-size: 13px;
   color: #d4d4d4;
   overflow-y: auto;
+  font-family: 'Cascadia Code', monospace; /* new distinctive font */
 }
 
 .folder,
@@ -477,7 +492,7 @@
 }
 
 .tab {
-  padding: 5px 15px;
+  padding: 5px 20px;
   border-radius: 3px 3px 0 0;
   background: #2d2d2d;
   color: #ccc;
@@ -486,8 +501,8 @@
 }
 
 .tab.active {
-  background: #1e1e1e;
-  border-top: 5px solid #0e639c;
+  background: rgb(15, 15, 15);
+  border-top: 2px solid #0e639c;
   color: #fff;
 }
 
@@ -497,11 +512,11 @@
   background: rgb(15, 15, 15);
   color: #d4d4d4;
   padding: 12px;
-  font-family: "Fira Code", monospace;
   font-size: 16px;
   white-space: pre;
   min-width: max-content;
 }
+
 
 .run-script {
   display: inline-flex;

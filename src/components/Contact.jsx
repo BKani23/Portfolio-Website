@@ -1,21 +1,23 @@
 import { useState } from "react";
 import "../styles/Contact.css";
-import { MdOutlineFolderOpen } from "react-icons/md";
 import { AiOutlineFile } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
-import { RiAppsLine } from "react-icons/ri";
-import { BsGit } from "react-icons/bs";
+import { IoIosGitMerge } from "react-icons/io";
+import { CiSettings } from "react-icons/ci";
 import { FaPlay } from "react-icons/fa";
+import { VscExtensions } from "react-icons/vsc";
+import { VscDebugAltSmall } from "react-icons/vsc";
 import { IoIosSearch, IoIosArrowDown } from "react-icons/io";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const activityIcons = [
-  { icon: MdOutlineFolderOpen, label: "Explorer" },
-  { icon: AiOutlineFile, label: "Files" },
+  { icon: AiOutlineFile, label: "File" },
   { icon: BiSearch, label: "Search" },
-  { icon: RiAppsLine, label: "Extensions" },
-  { icon: BsGit, label: "Source Control" },
+  { icon: IoIosGitMerge, label: "Source Control" },
+  { icon: VscDebugAltSmall, label: "Run & Debug" },
+  { icon: VscExtensions, label: "Extensions" },
+  { icon: CiSettings, label: "Settings" },
 ];
 
 const contactCodeHeader = `import { sendToServer } from './api.js';\n\n`;
@@ -232,15 +234,24 @@ const Contact = () => {
                       <span className="circle green"></span>
                     </div>
 
-                    <div className="breadcrumb">
-                      Portfolio &gt; src &gt; contact.tsx
+                    <div
+                      className="breadcrumb"
+                      style={{ fontFamily: "Cascadia Code",color : "rgb(197, 211, 46)" }}
+                    >
+                      Portfolio &gt; src &gt;{" "}
+                      {activeTab === "contact.js" ? "contact.js" : "api.js"}
                     </div>
 
                     <div className="top-right-container">
                       <span className="search-icon">
                         <IoIosSearch />
                       </span>
-                      <span className="project-name">Portfolio</span>
+                      <span
+                        className="project-name"
+                        style={{ fontFamily: "Cascadia Code" }}
+                      >
+                        Portfolio
+                      </span>
                     </div>
                   </div>
 
@@ -248,10 +259,14 @@ const Contact = () => {
                     <div className="activity-bar">
                       {activityIcons.map((item, index) => {
                         const IconComponent = item.icon;
+                        const isSettings = item.label === "Settings";
+
                         return (
                           <div
                             key={index}
-                            className={`icon ${index === 0 ? "active" : ""}`}
+                            className={`icon ${isSettings ? "settings" : ""} ${
+                              index === 0 ? "active" : ""
+                            }`}
                             title={item.label}
                           >
                             <IconComponent size={24} />
@@ -261,7 +276,12 @@ const Contact = () => {
                     </div>
 
                     <div className="explorer-panel">
-                      <p className="explorer-text">EXPLORER</p>
+                      <p
+                        className="explorer-text"
+                        style={{ fontFamily: "Cascadia Code" }}
+                      >
+                        EXPLORER
+                      </p>
 
                       {/* Root Portfolio Folder */}
                       <div className="folder">
@@ -284,7 +304,7 @@ const Contact = () => {
                           />
                           <span
                             className="portfolio-text"
-                            style={{ marginLeft: 4 }}
+                            style={{ fontFamily: "Cascadia Code" }}
                           >
                             PORTFOLIO
                           </span>
@@ -316,7 +336,14 @@ const Contact = () => {
                                     transition: "transform 0.2s ease",
                                   }}
                                 />
-                                <span style={{ marginLeft: 4 }}>src</span>
+                                <span
+                                  style={{
+                                    marginLeft: 4,
+                                    fontFamily: "Cascadia Code",
+                                  }}
+                                >
+                                  src
+                                </span>
                               </div>
 
                               {!isSrcCollapsed && (
@@ -325,6 +352,7 @@ const Contact = () => {
                                   style={{ paddingLeft: 16 }}
                                 >
                                   <div
+                                    style={{ fontFamily: "Cascadia Code" }}
                                     className={`file ${activeTab === "contact.js" ? "active-file" : ""}`}
                                     onClick={() => setActiveTab("contact.js")}
                                   >
@@ -337,11 +365,12 @@ const Contact = () => {
                                             : "#d4d4d4",
                                       }}
                                     />
-                                    contact.tsx
+                                    contact.js
                                   </div>
                                   <div
                                     className={`file ${activeTab === "api.js" ? "active-file" : ""}`}
                                     onClick={() => setActiveTab("api.js")}
+                                    style={{ fontFamily: "Cascadia Code" }}
                                   >
                                     <AiOutlineFile
                                       style={{
@@ -365,12 +394,14 @@ const Contact = () => {
                     <div className="code-editor-panel">
                       <div className="tabs">
                         <div
+                          style={{ fontFamily: "Cascadia Code" }}
                           className={`tab ${activeTab === "contact.js" ? "active" : ""}`}
                           onClick={() => setActiveTab("contact.js")}
                         >
-                          contact.jsx
+                          contact.js
                         </div>
                         <div
+                          style={{ fontFamily: "Cascadia Code" }}
                           className={`tab ${activeTab === "api.js" ? "active" : ""}`}
                           onClick={() => setActiveTab("api.js")}
                         >
@@ -387,7 +418,10 @@ const Contact = () => {
                             ))}
                         </div>
 
-                        <pre className="code-content">
+                        <pre
+                          className="code-content"
+                          style={{ fontFamily: "Cascadia Code" }}
+                        >
                           {(activeTab === "contact.js" ? codeString : apiString)
                             .split("\n")
                             .map((line, i) => (
@@ -431,8 +465,8 @@ const Contact = () => {
                                           cursor: "text",
                                           direction: "ltr",
                                           unicodeBidi: "plaintext",
-                                          display: "inline-block", // important
-                                          minWidth: "1ch", // important
+                                          display: "inline-block",
+                                          minWidth: "1ch",
                                         }}
                                         contentEditable
                                         suppressContentEditableWarning
