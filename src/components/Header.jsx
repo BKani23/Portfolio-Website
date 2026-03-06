@@ -1,46 +1,49 @@
 import { useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
-import { MdOutlineDriveFileMove, MdOutlineMarkunread ,MdOutlineSchool } from "react-icons/md";
+import {
+  MdOutlineDriveFileMove,
+  MdOutlineMarkunread,
+  MdOutlineSchool,
+} from "react-icons/md";
 import { SlUser } from "react-icons/sl";
+import { VscTools } from "react-icons/vsc";
 
 
 import "../styles/Header.css";
 
 const Header = () => {
-  
   const [active, setActive] = useState(null);
 
   const menuItems = [
     { icon: <IoHomeOutline />, label: "Home", key: "home" },
     { icon: <SlUser />, label: "About", key: "about" },
-    { icon: <MdOutlineSchool  />, label: "Education", key: "education" },
+    { icon: <MdOutlineSchool />, label: "Education", key: "education" },
+    { icon: <VscTools />, label: "Skills ", key: "skills-and-tools" },
     { icon: <MdOutlineDriveFileMove />, label: "Projects", key: "projects" },
-    { icon: <MdOutlineMarkunread />, label: "Contact", key: "contact" },
+    { icon: <MdOutlineMarkunread />, label: "Contact", key: "contact" }
+    
   ];
 
   return (
-    
-    <header className="header-container">
-      <h2 className="initials-text left-section" data-cursor="disable">BK<span className="period">.</span></h2>
+    <header data-cursor="disable" className="header-container">
+      <h2 className="initials-text left-section">
+        BK<span className="period">.</span>
+      </h2>
 
       <div className="nav-bar">
         {menuItems.map((item) => (
           <div
             key={item.key}
+            label={item.label}
             className={`menu-icon ${active === item.key ? "active" : ""}`}
             onClick={() => {
-
               setActive(item.key);
 
               document
-              .querySelector(`.${item.key}`)
-              .scrollIntoView({ behavior: "smooth" })
-
-          }
-
-            }
+                .querySelector(`.${item.key}`)
+                .scrollIntoView({ behavior: "smooth" });
+            }}
             data-label={item.label}
-            data-cursor="disable"
           >
             {item.icon}
           </div>
@@ -53,7 +56,6 @@ const Header = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="download-cv-button"
-          data-cursor="disable"
         >
           View CV
         </a>
