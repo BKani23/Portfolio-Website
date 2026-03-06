@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Slab:wght@700&display=swap");
+
+.projects-section {
+  padding: 105px 12%;
+  background: #070707;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.project-title {
+  font-size: clamp(70px, 9vw, 50px);
+  font-weight: 800;
+  letter-spacing: 6px;
+  font-family: "Audiowide", cursive;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.project-underline {
+  width: 180px;
+  height: 5px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff9900, #ffffff);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+  margin: -30px auto 100px auto;
+}
+
+.projects-quote {
+  font-style: italic;
+  color: #aaa;
+  font-size: 1.2rem;
+  margin-top: -80px;
+  text-align: center;
+  max-width: 600px;
+}
+
+.projects-filter {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.projects-filter button {
+  padding: 12px 30px;
+  background: none;
+  border: 2px solid #555;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.projects-filter button.active,
+.projects-filter button:hover {
+  border-color: orange;
+  color: orange;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.project-card {
+  display: flex;
+  gap: 30px;
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 20px;
+  align-items: center;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  flex-wrap: wrap;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(255, 165, 0, 0.3);
+}
+
+.project-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.project-info h3 {
+  margin: 0 0 15px 0;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.8rem;
+  color: #ffa500;
+}
+
+.project-info p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.project-info .tech-stack {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.project-info .tech {
+  background: #333;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.project-links a {
+  margin-right: 15px;
+  color: orange;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.project-links a:hover {
+  color: #fff;
+}
+
+/* shimmer animation for underline */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .projects-section {
+    padding: 100px 6%;
+  }
+}
