@@ -54,7 +54,7 @@ export const sendToServer = async (data) => {
 };`;
 
 const Contact = () => {
-  
+
   const [mode, setMode] = useState("standard");
   const [activeTab, setActiveTab] = useState("contact.js");
   const [activeLine, setActiveLine] = useState(2);
@@ -70,9 +70,9 @@ const Contact = () => {
   const handleSubmit = async (e) => {
 
     if (e) e.preventDefault();
-  
+
     const { name, email, message } = formData;
-  
+
     if (!name.trim() || !email.trim() || !message.trim()) {
       toast.dismiss();
       toast.error(
@@ -82,9 +82,9 @@ const Contact = () => {
       );
       return;
     }
-  
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
     if (!emailRegex.test(email)) {
       toast.dismiss();
       toast.error(
@@ -94,7 +94,7 @@ const Contact = () => {
       );
       return;
     }
-  
+
     try {
       const response = await fetch("https://formspree.io/f/xojkalao", {
         method: "POST",
@@ -104,7 +104,7 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         toast.dismiss();
         toast.success(
@@ -112,8 +112,8 @@ const Contact = () => {
             ? "Script executed successfully!"
             : "Message sent successfully!"
         );
-  
-       setFormData({
+
+        setFormData({
           name: "",
           email: "",
           message: "",
@@ -149,7 +149,7 @@ const Contact = () => {
 
       <div className="contact-underline"></div>
 
-      <div className="contact-card contact">
+      <div className="contact-card contact" data-cursor="disable">
         <div className="contact-toggle">
           <button
             className={mode === "standard" ? "active" : ""}
@@ -165,60 +165,61 @@ const Contact = () => {
           </button>
         </div>
 
-        <div className="contact-content">
+        <div
+          className={`contact-content ${mode === "standard" ? "slide-left" : "slide-right"}`}
+        >
+          {" "}
           {mode === "standard" ? (
-            <div className="standard-placeholder">
-              <form className="contact-form" onSubmit={handleSubmit} noValidate>
-                <div className="form-row">
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder=" "
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                    />
-                    <label>Name</label>
-                  </div>
-
-                  <div className="form-group">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder=" "
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                    />
-                    <label>Email</label>
-                  </div>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <div className="form-row">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder=" "
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                  />
+                  <label>Name</label>
                 </div>
 
-                <div className="form-row">
-                  <div className="form-group full-width">
-                    <textarea
-                      name="message"
-                      rows="5"
-                      placeholder=" "
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                    />
-                    <label>Message</label>
-                  </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder=" "
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                  <label>Email</label>
                 </div>
+              </div>
 
-                <button type="submit" className="submit-btn">
-                  Send Message
-                </button>
-              </form>
-            </div>
+              <div className="form-row">
+                <div className="form-group full-width">
+                  <textarea
+                    name="message"
+                    rows="5"
+                    placeholder=" "
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                  />
+                  <label>Message</label>
+                </div>
+              </div>
+
+              <button type="submit" className="submit-btn">
+                Send Message
+              </button>
+            </form>
           ) : (
-            <div className="dev-mode-container" data-cursor="disable">
+            <div className="dev-mode-container">
               <div className="dev-top-bar">
                 <div className="window-circles">
                   <span className="circle red"></span>
@@ -239,7 +240,7 @@ const Contact = () => {
               </div>
 
               <div className="dev-main-row">
-                <div className="activity-bar" data-cursor="disable">
+                <div className="activity-bar">
                   {activityIcons.map((item, index) => {
                     const IconComponent = item.icon;
                     return (
@@ -254,7 +255,7 @@ const Contact = () => {
                   })}
                 </div>
 
-                <div className="explorer-panel" data-cursor="disable">
+                <div className="explorer-panel">
                   <p className="explorer-text">EXPLORER</p>
 
                   {/* Root Portfolio Folder */}
@@ -351,7 +352,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="code-editor-panel" data-cursor="disable">
+                <div className="code-editor-panel">
                   <div className="tabs">
                     <div
                       className={`tab ${activeTab === "contact.js" ? "active" : ""}`}
@@ -482,8 +483,6 @@ const Contact = () => {
                     <FaPlay color="#4bf417" />
                     Run Script
                   </button>
-
-           
                 </div>
               </div>
             </div>

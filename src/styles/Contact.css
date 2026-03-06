@@ -64,6 +64,40 @@
   align-items: center;
   color: #555;
   font-size: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Slide from left (Standard form) */
+.slide-left > * {
+  animation: slideFromLeft 1s ease forwards;
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide from right (Developer mode) */
+.slide-right > * {
+  animation: slideFromRight 1s ease forwards;
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .contact-title {
@@ -189,13 +223,13 @@
 }
 
 .file {
-  display: flex;          /* makes icon and filename inline */
-  align-items: center;    /* vertically center icon with text */
-  gap: 6px;               /* space between icon and filename */
+  display: flex;          
+  align-items: center;    
+  gap: 6px;             
   padding-left: 12px;
   margin: 2px 0;
   cursor: pointer;
-  white-space: nowrap;    /* prevents filename wrapping */
+  white-space: nowrap;    
 }
 
 .caret {
@@ -405,9 +439,6 @@
   margin-right: 4px;
 }
 
-
-
-
 .file:hover {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
@@ -434,7 +465,7 @@
 }
 
 .tab {
-  padding: 5px 12px;
+  padding: 5px 15px;
   border-radius: 3px 3px 0 0;
   background: #2d2d2d;
   color: #ccc;
@@ -444,7 +475,7 @@
 
 .tab.active {
   background: #1e1e1e;
-  border-top: 2px solid #0e639c;
+  border-top: 5px solid #0e639c;
   color: #fff;
 }
 
@@ -466,7 +497,7 @@
   gap: 6px;
   position: absolute;
   bottom: 12px;
-  right: 12px;
+  right: 25px;
   background: #0e639c;
   color: #fff;
   border: none;
