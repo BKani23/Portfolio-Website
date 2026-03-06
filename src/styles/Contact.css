@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 120px 10%;
+  padding: 105px 10%;
   box-sizing: border-box;
 }
 
@@ -123,10 +123,14 @@
 
 
 .contact-title {
-  font-size: clamp(40px, 6vw, 80px);
-  font-weight: 700;
-  text-align: center;
-  margin: 0;
+  font-size: clamp(70px, 9vw, 50px);
+  font-weight: 800;
+  letter-spacing: 6px;
+  font-family: 'Audiowide', cursive; 
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
 }
 
 .contact-underline {
@@ -136,7 +140,7 @@
   background: linear-gradient(90deg, #ff9900, #ffffff);
   background-size: 200% auto;
   animation: shimmer 4s linear infinite;
-  margin: 15px auto 80px auto;
+  margin: 10px auto 60px auto;
 }
 
 /*  Form Layout  */

@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&display=swap');
 .about-section {
   min-height: 200vh;
-  padding: 150px 10%;
+  padding: 105px 10%;
   display: flex;
   flex-direction: column;
-  gap: 120px;
+  gap: 40px;
   background: #000;
   color: white;
 }
@@ -13,7 +13,7 @@
 .about-line {
   position: relative;
   font-family: 'Audiowide', cursive;
-  font-size: clamp(40px, 6vw, 90px);
+  font-size: 5rem;
   font-weight: 700;
   line-height: 1.1;
   color: transparent;
@@ -45,7 +45,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 80px;
   position: relative;
 }
 
@@ -90,7 +89,7 @@
 
 /* Animated underline */
 .about-underline {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 140px;
   height: 4px;
   border-radius: 10px;

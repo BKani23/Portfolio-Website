@@ -8,6 +8,7 @@ import Cursor from "./components/Cursor";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import Projects from "./components/Projects";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <About />
           <Education/>
           <Skills/>
+          <Projects/>
           <Contact/>
           <SocialSection />
         

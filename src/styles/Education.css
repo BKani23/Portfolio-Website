@@ -1,13 +1,24 @@
 
 .education-section {
   min-height: 100vh;
-  padding: 120px 10%;
+  padding: 105px 10%;
   display: flex;
   flex-direction: column;
   gap: 80px;
   background: #070707;
   color: white;
   font-family: 'Poppins', sans-serif;
+}
+
+.education-title {
+  font-size: clamp(70px, 9vw, 50px);
+  font-weight: 800;
+  letter-spacing: 6px;
+  font-family: 'Audiowide', cursive; 
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
 }
 
 .education-header {
@@ -17,14 +28,10 @@
   position: relative;
 }
 
-.education-title {
-  font-size: clamp(50px, 8vw, 100px);
-  font-weight: 700;
-  color: white;
-}
+
 
 .education-underline {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 140px;
   height: 4px;
   border-radius: 10px;

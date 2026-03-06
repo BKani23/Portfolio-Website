@@ -45,7 +45,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section className="skills-section">
+    <section className="skills-section skills-and-tools">
       <h1 className="about-title">
         <span className="code-symbol">&lt;</span>
 

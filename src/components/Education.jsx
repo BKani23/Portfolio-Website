@@ -40,7 +40,7 @@ const Education = () => {
   return (
     <section className="education-section education">
       <div className="education-header">
-        <h1 className="about-title">
+        <h1 className="education-title">
           <span className="code-symbol">&lt;</span>
           <span className="code-text">Education</span>
           <span className="code-symbol">/&gt;</span>
