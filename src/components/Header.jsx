@@ -52,7 +52,7 @@ const Header = () => {
 
       <div className="right-section">
         <a
-          href="/Kani-cv.pdf"
+          href="/Kani_Bulelani_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="download-cv-button"
