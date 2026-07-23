@@ -4,8 +4,8 @@ import "../styles/SocialSection.css";
 
 const SOCIAL_LINKS = {
   github: "https://github.com/BKani23",
-  linkedin: "https.linkedin.com/in/bulelani-kani",
-  instagram: "https://www.instagram.com/bulelanibeekay23/"
+  linkedin: "https://www.linkedin.com/in/bulelani-kani/",
+  // instagram: "https://www.instagram.com/bulelanibeekay23/"
 };
 
 const SocialSection = () => {
@@ -19,9 +19,9 @@ const SocialSection = () => {
         <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" data-cursor="disable">
           <FaLinkedinIn />
         </a>
-        <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" data-cursor="disable">
+        {/* <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" data-cursor="disable">
           <FaInstagram />
-        </a>
+        </a> */}
       </div>
 
     </div>
